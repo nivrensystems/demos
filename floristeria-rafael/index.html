@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Floristería Rafael — Flores frescas y encargos en Nervión, Sevilla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-hoja:#234534;
+    --verde-claro:#86A98F;
+    --crema:#FBF7F0;
+    --rosa-ramo:#C2467C;
+    --tinta:#22271F;
+    --blanco:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:'Karla',system-ui,sans-serif;
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.15;font-weight:600}
+
+  /* Banner de demo */
+  .demo-banner{
+    background:var(--tinta);color:var(--crema);
+    font-size:.85rem;text-align:center;padding:.5rem 1rem;
+  }
+  .demo-banner strong{color:#fff}
+
+  /* Cabecera */
+  header{
+    background:var(--verde-hoja);color:var(--crema);
+    padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  }
+  .marca{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;letter-spacing:.01em}
+  .tel-header{color:var(--crema);text-decoration:none;font-weight:700;border:1.5px solid var(--verde-claro);border-radius:999px;padding:.4rem 1rem;white-space:nowrap}
+  .tel-header:hover{background:var(--verde-claro);color:var(--verde-hoja)}
+
+  /* Héroe */
+  .hero{
+    background:var(--verde-hoja);color:var(--crema);
+    padding:3.5rem 1.25rem 4.5rem;position:relative;overflow:hidden;
+  }
+  .hero-inner{max-width:920px;margin:0 auto;position:relative;z-index:1}
+  .hero h1{font-size:clamp(2.4rem,7vw,4.2rem);max-width:14ch}
+  .hero p{font-size:1.15rem;max-width:44ch;margin-top:1rem;color:#E9E4D8}
+  .hero .acciones{margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:700;font-size:1rem;
+    padding:.85rem 1.6rem;border-radius:999px;border:2px solid transparent;
+  }
+  .btn-principal{background:var(--rosa-ramo);color:#fff}
+  .btn-principal:hover{background:#A93368}
+  .btn-secundario{border-color:var(--verde-claro);color:var(--crema)}
+  .btn-secundario:hover{background:var(--verde-claro);color:var(--verde-hoja)}
+  .nota-estrellas{margin-top:1.75rem;font-size:.95rem;color:#D8E2D6}
+  .nota-estrellas b{color:#fff}
+  /* Ramo botánico en SVG: siempre se dibuja, no depende de fotos */
+  .hero svg.ramo{position:absolute;right:-40px;bottom:-30px;width:min(46vw,420px);opacity:.35;pointer-events:none}
+
+  section{padding:3.5rem 1.25rem}
+  .contenedor{max-width:920px;margin:0 auto}
+  .titulo-seccion{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:1.5rem}
+
+  /* Servicios: lista con regla vertical, no tarjetas */
+  .servicios{background:var(--crema)}
+  .servicio{
+    display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
+    padding:1.1rem 0;border-bottom:1px solid #E4DCCB;
+  }
+  .servicio:last-child{border-bottom:none}
+  .servicio .icono{width:2.2rem;height:2.2rem;flex:none;color:var(--verde-hoja)}
+  .servicio h3{font-size:1.15rem;color:var(--verde-hoja)}
+  .servicio p{color:#4A503F;max-width:60ch}
+
+  /* Panel de encargo: el elemento protagonista */
+  .encargo{background:var(--verde-claro)}
+  .panel-encargo{
+    background:var(--blanco);border-radius:20px;padding:2rem 1.5rem;
+    box-shadow:0 12px 30px rgba(35,69,52,.18);
+  }
+  .panel-encargo h2{color:var(--verde-hoja);font-size:clamp(1.5rem,4vw,2rem)}
+  .panel-encargo>p{margin-top:.5rem;color:#4A503F;max-width:52ch}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0}
+  .chip{
+    border:1.5px solid var(--verde-hoja);color:var(--verde-hoja);
+    border-radius:999px;padding:.4rem .95rem;font-size:.92rem;font-weight:500;background:transparent;cursor:pointer;
+  }
+  .chip[aria-pressed="true"]{background:var(--verde-hoja);color:var(--crema)}
+  .panel-encargo .btn-principal{margin-top:.5rem}
+  .aviso-demo{font-size:.85rem;color:#7A7F70;margin-top:1rem}
+
+  /* Reseñas */
+  .resenas{background:var(--verde-hoja);color:var(--crema);text-align:center}
+  .resenas .estrellas{font-size:1.8rem;letter-spacing:.15em;color:#F2C94C}
+  .resenas p{max-width:46ch;margin:0.75rem auto 0}
+  .resenas b{color:#fff}
+
+  /* Visita */
+  .visita .fila{display:grid;gap:2rem;grid-template-columns:1fr}
+  @media(min-width:700px){.visita .fila{grid-template-columns:1fr 1fr}}
+  .dato{margin-bottom:1.25rem}
+  .dato h3{color:var(--verde-hoja);font-size:1.05rem;margin-bottom:.15rem}
+  .dato a{color:var(--rosa-ramo);font-weight:700;text-decoration:none}
+  .dato a:hover{text-decoration:underline}
+  .mapa{border:0;width:100%;height:280px;border-radius:16px;background:#E4DCCB}
+
+  footer{background:var(--tinta);color:#B9BCAF;padding:2rem 1.25rem;font-size:.9rem}
+  footer .contenedor{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+  footer a{color:var(--crema);text-decoration:none}
+
+  .btn:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid var(--rosa-ramo);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">Demostración preparada por <strong>Nivren</strong> · Así podría verse la web de Floristería Rafael</div>
+
+<header>
+  <span class="marca">Floristería Rafael</span>
+  <a class="tel-header" href="tel:+34954638660">954 63 86 60</a>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Flores frescas, de su barrio de siempre</h1>
+    <p>Ramos, encargos para celebraciones y flores para despedir como se merece. En Calle Ventura de la Vega, en pleno Nervión, Sevilla.</p>
+    <div class="acciones">
+      <a class="btn btn-principal" href="#encargo">Encargar flores</a>
+      <a class="btn btn-secundario" href="tel:+34954638660">Llamar ahora</a>
+    </div>
+    <p class="nota-estrellas">★ <b>4,8 sobre 5</b> · más de <b>110 reseñas</b> en Google</p>
+  </div>
+  <svg class="ramo" viewBox="0 0 200 220" fill="none" stroke="#E9E4D8" stroke-width="2" aria-hidden="true">
+    <path d="M100 210 C 98 150, 96 120, 90 80"/>
+    <path d="M100 210 C 104 155, 110 125, 122 90"/>
+    <path d="M100 210 C 100 165, 105 140, 100 110"/>
+    <ellipse cx="88" cy="70" rx="14" ry="20" transform="rotate(-15 88 70)"/>
+    <ellipse cx="126" cy="80" rx="13" ry="19" transform="rotate(18 126 80)"/>
+    <ellipse cx="100" cy="98" rx="12" ry="17"/>
+    <path d="M93 140 q -22 -6 -30 -26 q 24 -2 30 26" />
+    <path d="M108 150 q 24 -4 30 -24 q -26 -4 -30 24" />
+  </svg>
+</section>
+
+<section class="servicios">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Qué hacemos</h2>
+    <div class="servicio">
+      <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21 C 11 15, 10 12, 9 8"/><ellipse cx="9" cy="6" rx="2.5" ry="3.5"/><path d="M11 16 q -4 -1 -5 -5 q 4 0 5 5"/></svg>
+      <div><h3>Ramos y centros</h3><p>Flor fresca de temporada, preparada en el momento. Para regalar, para casa o para quedar bien de verdad.</p></div>
+    </div>
+    <div class="servicio">
+      <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7 v5 l3 3"/></svg>
+      <div><h3>Encargos con fecha</h3><p>Cumpleaños, aniversarios, comuniones y bodas. Nos dice el día y la ocasión, y sus flores llegan a tiempo.</p></div>
+    </div>
+    <div class="servicio">
+      <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 C 8 8, 8 14, 12 21 C 16 14, 16 8, 12 3 Z"/></svg>
+      <div><h3>Coronas y condolencias</h3><p>Le acompañamos en los momentos difíciles con discreción y puntualidad.</p></div>
+    </div>
+    <div class="servicio">
+      <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 21 h16"/><path d="M8 21 V 13 a 4 4 0 0 1 8 0 V 21"/><path d="M12 13 V 6"/><ellipse cx="12" cy="4.5" rx="2" ry="2.5"/></svg>
+      <div><h3>Plantas y detalles</h3><p>Plantas de interior y exterior, y ese detalle verde que alegra cualquier rincón.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="encargo" id="encargo">
+  <div class="contenedor">
+    <div class="panel-encargo">
+      <h2>Encargue sus flores en un minuto</h2>
+      <p>Elija la ocasión y cuéntenos qué necesita. Le confirmamos el encargo y el precio sin que tenga que acercarse ni esperar al teléfono.</p>
+      <div class="chips" role="group" aria-label="Ocasión del encargo">
+        <button class="chip" aria-pressed="true">Cumpleaños</button>
+        <button class="chip" aria-pressed="false">Aniversario</button>
+        <button class="chip" aria-pressed="false">Boda o evento</button>
+        <button class="chip" aria-pressed="false">Condolencias</button>
+        <button class="chip" aria-pressed="false">Otra ocasión</button>
+      </div>
+      <a class="btn btn-principal" href="tel:+34954638660">Hacer mi encargo</a>
+      <p class="aviso-demo">En la versión final, este encargo le llegaría directamente a su WhatsApp o correo, con la fecha y los datos del cliente ya organizados.</p>
+    </div>
+  </div>
+</section>
+
+<section class="resenas">
+  <div class="contenedor">
+    <div class="estrellas" aria-hidden="true">★★★★★</div>
+    <p>Sus clientes ya lo dicen en Google: <b>4,8 sobre 5</b> con más de <b>110 reseñas</b>. Esta web solo lo pone donde todos puedan verlo.</p>
+  </div>
+</section>
+
+<section class="visita">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Venga a vernos</h2>
+    <div class="fila">
+      <div>
+        <div class="dato"><h3>Dirección</h3><p>Calle Ventura de la Vega, 1<br>41005 Sevilla (Nervión)</p></div>
+        <div class="dato"><h3>Teléfono</h3><p><a href="tel:+34954638660">954 63 86 60</a></p></div>
+        <div class="dato"><h3>Instagram</h3><p><a href="https://www.instagram.com/floristeria_rafael" rel="noopener" target="_blank">@floristeria_rafael</a></p></div>
+      </div>
+      <iframe class="mapa" title="Mapa de Floristería Rafael" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Floristeria+Rafael,+Calle+Ventura+de+la+Vega+1,+41005+Sevilla&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="contenedor">
+    <span>Floristería Rafael · Sevilla</span>
+    <span>Demo de <a href="https://nivrensystems.com" rel="noopener">Nivren</a> · No es la web oficial del negocio</span>
+  </div>
+</footer>
+
+<script>
+  // Chips de ocasión: interacción mínima de la demo
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', 'false'));
+      chip.setAttribute('aria-pressed', 'true');
+    });
+  });
+</script>
+</body>
+</html>
