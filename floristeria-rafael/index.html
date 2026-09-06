@@ -117,6 +117,15 @@
   footer .contenedor{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
   footer a{color:var(--crema);text-decoration:none}
 
+
+  /* Catálogo */
+  .catalogo{background:var(--blanco)}
+  .producto{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;padding:.8rem 0;border-bottom:1px solid #EEE7D8}
+  .producto:last-of-type{border-bottom:none}
+  .producto .nombre{font-weight:500}
+  .producto .precio{font-family:'Fraunces',serif;color:var(--verde-hoja);font-weight:600;white-space:nowrap}
+  .catalogo .nota-catalogo{margin-top:1.25rem;color:#7A7F70;font-size:.95rem;max-width:60ch}
+
   .btn:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid var(--rosa-ramo);outline-offset:2px}
 </style>
 </head>
@@ -170,6 +179,22 @@
       <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 21 h16"/><path d="M8 21 V 13 a 4 4 0 0 1 8 0 V 21"/><path d="M12 13 V 6"/><ellipse cx="12" cy="4.5" rx="2" ry="2.5"/></svg>
       <div><h3>Plantas y detalles</h3><p>Plantas de interior y exterior, y ese detalle verde que alegra cualquier rincón.</p></div>
     </div>
+  </div>
+</section>
+
+
+<section class="catalogo">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Nuestros ramos y centros</h2>
+    <div class="producto"><span class="nombre">Girasol</span><span class="precio">desde 15 €</span></div>
+    <div class="producto"><span class="nombre">Ramo pastel</span><span class="precio">desde 30 €</span></div>
+    <div class="producto"><span class="nombre">Ramo silvestre seco Lizy</span><span class="precio">35 €</span></div>
+    <div class="producto"><span class="nombre">Ramo primaveral redondo</span><span class="precio">desde 40 €</span></div>
+    <div class="producto"><span class="nombre">Docena de rosas rojas</span><span class="precio">desde 50 €</span></div>
+    <div class="producto"><span class="nombre">Composición de 2 orquídeas en cristal</span><span class="precio">90 €</span></div>
+    <div class="producto"><span class="nombre">Centro Salmón</span><span class="precio">desde 100 €</span></div>
+    <div class="producto"><span class="nombre">24 rosas de aniversario</span><span class="precio">140 €</span></div>
+    <p class="nota-catalogo">Una muestra de su catálogo real. En la versión final, cada producto aparece con sus propias fotos y el catálogo completo, listo para encargar.</p>
   </div>
 </section>
 
