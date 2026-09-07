@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Dulces Artesanos — Pastelería artesanal y encargos en Sevilla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-hoja:#553320;
+    --verde-claro:#C9A97E;
+    --crema:#FBF7F0;
+    --rosa-ramo:#B93A63;
+    --tinta:#22271F;
+    --blanco:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:'Karla',system-ui,sans-serif;
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.15;font-weight:600}
+
+  /* Banner de demo */
+  .demo-banner{
+    background:var(--tinta);color:var(--crema);
+    font-size:.85rem;text-align:center;padding:.5rem 1rem;
+  }
+  .demo-banner strong{color:#fff}
+
+  /* Cabecera */
+  header{
+    background:var(--verde-hoja);color:var(--crema);
+    padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  }
+  .marca{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;letter-spacing:.01em}
+  .tel-header{color:var(--crema);text-decoration:none;font-weight:700;border:1.5px solid var(--verde-claro);border-radius:999px;padding:.4rem 1rem;white-space:nowrap}
+  .tel-header:hover{background:var(--verde-claro);color:var(--verde-hoja)}
+
+  /* Héroe */
+  .hero{
+    background:var(--verde-hoja);color:var(--crema);
+    padding:3.5rem 1.25rem 4.5rem;position:relative;overflow:hidden;
+  }
+  .hero-inner{max-width:920px;margin:0 auto;position:relative;z-index:1}
+  .hero h1{font-size:clamp(2.4rem,7vw,4.2rem);max-width:14ch}
+  .hero p{font-size:1.15rem;max-width:44ch;margin-top:1rem;color:#E9E4D8}
+  .hero .acciones{margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:700;font-size:1rem;
+    padding:.85rem 1.6rem;border-radius:999px;border:2px solid transparent;
+  }
+  .btn-principal{background:var(--rosa-ramo);color:#fff}
+  .btn-principal:hover{background:#A93368}
+  .btn-secundario{border-color:var(--verde-claro);color:var(--crema)}
+  .btn-secundario:hover{background:var(--verde-claro);color:var(--verde-hoja)}
+  .nota-estrellas{margin-top:1.75rem;font-size:.95rem;color:#D8E2D6}
+  .nota-estrellas b{color:#fff}
+  /* Ramo botánico en SVG: siempre se dibuja, no depende de fotos */
+  .hero svg.ramo{position:absolute;right:-40px;bottom:-30px;width:min(46vw,420px);opacity:.35;pointer-events:none}
+
+  section{padding:3.5rem 1.25rem}
+  .contenedor{max-width:920px;margin:0 auto}
+  .titulo-seccion{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:1.5rem}
+
+  /* Servicios: lista con regla vertical, no tarjetas */
+  .servicios{background:var(--crema)}
+  .servicio{
+    display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
+    padding:1.1rem 0;border-bottom:1px solid #E4DCCB;
+  }
+  .servicio:last-child{border-bottom:none}
+  .servicio .icono{width:2.2rem;height:2.2rem;flex:none;color:var(--verde-hoja)}
+  .servicio h3{font-size:1.15rem;color:var(--verde-hoja)}
+  .servicio p{color:#4A503F;max-width:60ch}
+
+  /* Panel de encargo: el elemento protagonista */
+  .encargo{background:var(--verde-claro)}
+  .panel-encargo{
+    background:var(--blanco);border-radius:20px;padding:2rem 1.5rem;
+    box-shadow:0 12px 30px rgba(35,69,52,.18);
+  }
+  .panel-encargo h2{color:var(--verde-hoja);font-size:clamp(1.5rem,4vw,2rem)}
+  .panel-encargo>p{margin-top:.5rem;color:#4A503F;max-width:52ch}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0}
+  .chip{
+    border:1.5px solid var(--verde-hoja);color:var(--verde-hoja);
+    border-radius:999px;padding:.4rem .95rem;font-size:.92rem;font-weight:500;background:transparent;cursor:pointer;
+  }
+  .chip[aria-pressed="true"]{background:var(--verde-hoja);color:var(--crema)}
+  .panel-encargo .btn-principal{margin-top:.5rem}
+  .aviso-demo{font-size:.85rem;color:#7A7F70;margin-top:1rem}
+
+  /* Reseñas */
+  .resenas{background:var(--verde-hoja);color:var(--crema);text-align:center}
+  .resenas .estrellas{font-size:1.8rem;letter-spacing:.15em;color:#F2C94C}
+  .resenas p{max-width:46ch;margin:0.75rem auto 0}
+  .resenas b{color:#fff}
+
+  /* Visita */
+  .visita .fila{display:grid;gap:2rem;grid-template-columns:1fr}
+  @media(min-width:700px){.visita .fila{grid-template-columns:1fr 1fr}}
+  .dato{margin-bottom:1.25rem}
+  .dato h3{color:var(--verde-hoja);font-size:1.05rem;margin-bottom:.15rem}
+  .dato a{color:var(--rosa-ramo);font-weight:700;text-decoration:none}
+  .dato a:hover{text-decoration:underline}
+  .mapa{border:0;width:100%;height:280px;border-radius:16px;background:#E4DCCB}
+
+  footer{background:var(--tinta);color:#B9BCAF;padding:2rem 1.25rem;font-size:.9rem}
+  footer .contenedor{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+  footer a{color:var(--crema);text-decoration:none}
+
+
+  /* Catálogo */
+  .catalogo{background:var(--blanco)}
+  .producto{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;padding:.8rem 0;border-bottom:1px solid #EEE7D8}
+  .producto:last-of-type{border-bottom:none}
+  .producto .nombre{font-weight:500}
+  .producto .precio{font-family:'Fraunces',serif;color:var(--verde-hoja);font-weight:600;white-space:nowrap}
+  .catalogo .nota-catalogo{margin-top:1.25rem;color:#7A7F70;font-size:.95rem;max-width:60ch}
+
+  .btn:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid var(--rosa-ramo);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">Demostración preparada por <strong>Nivren</strong> · Así podría verse la web de Dulces Artesanos</div>
+
+<header>
+  <span class="marca">Dulces Artesanos</span>
+  <a class="tel-header" href="tel:+34954626760">954 62 67 60</a>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Dulces artesanos, como se han hecho siempre</h1>
+    <p>Pastelería artesanal en Calle Torcuato Luca de Tena, Sevilla. Elaboración propia y tartas por encargo para cualquier ocasión.</p>
+    <div class="acciones">
+      <a class="btn btn-principal" href="#encargo">Hacer un encargo</a>
+      <a class="btn btn-secundario" href="tel:+34954626760">Llamar ahora</a>
+    </div>
+    <p class="nota-estrellas">más de <b>180 reseñas</b> en Google</p>
+  </div>
+  <svg class="ramo" viewBox="0 0 200 220" fill="none" stroke="#E9E4D8" stroke-width="2" aria-hidden="true">
+    <path d="M40 190 h120 v-30 a10 10 0 0 0 -10 -10 h-100 a10 10 0 0 0 -10 10 Z"/>
+    <path d="M55 150 h90 v-26 a8 8 0 0 0 -8 -8 h-74 a8 8 0 0 0 -8 8 Z"/>
+    <path d="M70 116 h60 v-22 a6 6 0 0 0 -6 -6 h-48 a6 6 0 0 0 -6 6 Z"/>
+    <path d="M100 88 v-14"/><ellipse cx="100" cy="68" rx="5" ry="7"/>
+    <path d="M55 150 q 10 8 20 0 q 10 8 20 0 q 10 8 20 0 q 10 8 20 0" opacity=".7"/>
+  </svg>
+</section>
+
+<section class="servicios">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Qué hacemos</h2>
+    <div class="servicio">
+      <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 20 h14 v-5 a3 3 0 0 0 -3 -3 h-8 a3 3 0 0 0 -3 3 Z"/><path d="M12 12 V 8"/><ellipse cx="12" cy="6.5" rx="1.6" ry="2"/></svg>
+      <div><h3>Tartas por encargo</h3><p>Para cumpleaños, comuniones, bodas y lo que se celebre. Nos cuenta la ocasión y la hacemos a su gusto.</p></div>
+    </div>
+    <div class="servicio">
+      <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7 v5 l3 3"/></svg>
+      <div><h3>Encargos con fecha</h3><p>Nos dice el día y la hora, y su encargo sale del obrador a tiempo, recién hecho.</p></div>
+    </div>
+    <div class="servicio">
+      <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20 h16"/><path d="M6 20 v-8 a6 6 0 0 1 12 0 v8"/><path d="M9 9 q 3 -3 6 0"/></svg>
+      <div><h3>Pastelería del día</h3><p>Dulces de elaboración propia cada mañana, de los de toda la vida.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="encargo" id="encargo">
+  <div class="contenedor">
+    <div class="panel-encargo">
+      <h2>Encargue su tarta en un minuto</h2>
+      <p>Elija la ocasión, la fecha y cuéntenos qué necesita. El encargo llega a su WhatsApp ya ordenado y completo, sin conversaciones interminables ni pedidos a medias.</p>
+      <div class="chips" role="group" aria-label="Ocasión del encargo">
+        <button class="chip" aria-pressed="true">Cumpleaños</button>
+        <button class="chip" aria-pressed="false">Comunión o bautizo</button>
+        <button class="chip" aria-pressed="false">Boda</button>
+        <button class="chip" aria-pressed="false">Empresa</button>
+        <button class="chip" aria-pressed="false">Otra ocasión</button>
+      </div>
+      <a class="btn btn-principal" href="tel:+34954626760">Llamar para encargar</a>
+      <p class="aviso-demo">En la versión final, este encargo le llegaría directamente a su WhatsApp o correo, con la fecha y los datos del cliente ya organizados.</p>
+    </div>
+  </div>
+</section>
+
+<section class="resenas">
+  <div class="contenedor">
+    <div class="estrellas" aria-hidden="true">★★★★★</div>
+    <p>Sus clientes ya lo dicen en Google: más de <b>180 reseñas</b> en Google. Esta web solo lo pone donde todos puedan verlo.</p>
+  </div>
+</section>
+
+<section class="visita">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Venga a vernos</h2>
+    <div class="fila">
+      <div>
+        <div class="dato"><h3>Dirección</h3><p>Calle Torcuato Luca de Tena, 32<br>41013 Sevilla</p></div>
+        <div class="dato"><h3>Teléfono</h3><p><a href="tel:+34954626760">954 62 67 60</a></p></div>
+        <div class="dato"><h3>Facebook</h3><p><a href="https://www.facebook.com/Dulces-Artesanos-SL-147561828824/" rel="noopener" target="_blank">Dulces Artesanos en Facebook</a></p></div>
+      </div>
+      <iframe class="mapa" title="Mapa de Dulces Artesanos" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Dulces+Artesanos,+Calle+Torcuato+Luca+de+Tena+32,+41013+Sevilla&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="contenedor">
+    <span>Dulces Artesanos · Sevilla</span>
+    <span>Demo de <a href="https://nivrensystems.com" rel="noopener">Nivren</a> · No es la web oficial del negocio</span>
+  </div>
+</footer>
+
+<script>
+  // Chips de ocasión: interacción mínima de la demo
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', 'false'));
+      chip.setAttribute('aria-pressed', 'true');
+    });
+  });
+</script>
+</body>
+</html>
